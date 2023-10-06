@@ -1,0 +1,52 @@
+<div class="user-profile-container">
+    <h2>User Profile</h2>
+    <div *ngIf="userProfile" class="profile-section">
+
+        <div class="profile-info">
+            <p><strong>Profile ID:</strong> {{ userProfile.profileid }}</p>
+            <p><strong>User Name:</strong> {{ UserName }}</p>
+
+            <div *ngIf="!editingBio" class="bio-section">
+                <p><strong>Bio:</strong> {{ userProfile.Bio }}</p>
+                <button class="edit-button" (click)="startEditing('bio')">Edit Bio</button>
+            </div>
+            <div *ngIf="editingBio" class="edit-section">
+                <label for="editedBio">Edit Bio:</label>
+                <textarea id="editedBio" [(ngModel)]="editedBio"></textarea>
+                <button class="save-button" (click)="saveChanges('bio')">Save</button>
+                <button class="cancel-button" (click)="cancelEditing('bio')">Cancel</button>
+            </div>
+        </div>
+
+        <div *ngIf="!editingProfilePicture" class="profile-picture-section">
+            <p><strong>Profile Picture:</strong></p>
+            <div class="profile-picture-container">
+                <div class="image-container">
+                    <img [src]="previewImage || 'path/to/default-image.jpg'" alt="Profile Picture" class="profile-picture" />
+                </div>
+                <button class="edit-button" (click)="startEditing('profilePicture')">Edit Profile Picture</button>
+            </div>
+        </div>
+        <div *ngIf="editingProfilePicture" class="edit-section">
+            <label for="fileInput">Choose Profile Picture:</label>
+            <input type="file" id="fileInput" (change)="handleFileInput($event)" />
+            <div *ngIf="editedProfilePicture">
+                <p><strong>Selected Picture:</strong></p>
+                <div class="image-container">
+                    <img [src]="previewImage" alt="Selected Picture" class="profile-picture" />
+                </div>
+            </div>
+            <button class="save-button" (click)="saveChanges('profilePicture')">Save</button>
+            <button class="cancel-button" (click)="cancelEditing('profilePicture')">Cancel</button>
+        </div>
+
+        <p><strong>Follower Count:</strong> {{ userProfile.followercount }}</p>
+
+        <div class="button-container">
+            <button type="submit" (click)="ResetPassword()" style="margin-right: 20px;" class="edit-button">Reset Password</button>
+            <button class="edit-button" (click)="gobacktohome()">Back to Home page</button>
+        </div>
+
+        <hr>
+    </div>
+</div>

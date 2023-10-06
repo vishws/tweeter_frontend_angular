@@ -1,0 +1,53 @@
+<div class="container">
+    <h1 class="main-heading">Tweeter Clone Project</h1>
+    <div class="login">
+        <div class="container">
+            <h1>Log in</h1>
+            <form (ngSubmit)="loginUser()" #loginForm="ngForm">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" [(ngModel)]="loginData.username" required class="form-control" />
+                    <!-- Display validation error message for required -->
+                    <div *ngIf="loginForm.controls['username'].hasError('required') && loginForm.controls['username'].touched" class="text-danger">
+                        Username is required.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" [(ngModel)]="loginData.password" required class="form-control" />
+                    <!-- Display validation error message for required -->
+                    <div *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched" class="text-danger">
+                        Password is required.
+                    </div>
+                </div>
+                <!-- <div class="form-group form-check">
+                    <input type="checkbox" id="rememberMe" name="rememberMe" [(ngModel)]="loginData.rememberMe" class="form-check-input" />
+                    <label for="rememberMe" class="form-check-label">Remember me</label>
+                </div> -->
+
+                <!-- Inside your login form -->
+                <div class="form-group form-check">
+                    <input type="checkbox" id="rememberMe" name="rememberMe" [(ngModel)]="loginData.rememberMe" class="form-check-input" />
+                    <label for="rememberMe" class="form-check-label">Remember me</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Login</button>
+                <a href="#" (click)="forgotPassword()" class="forgot-password-link">Forgot password?</a>
+
+                <hr>
+            </form>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <div class="register animated spin3D">
+        <div class="container">
+            <i class="fas fa-user-plus fa-5x"></i>
+            <h2>Hello, friend!</h2>
+            <p>Enter your personal details and start the journey with us</p>
+            <button routerLink="/registration">Register <i class="fas fa-arrow-circle-right"></i></button>
+        </div>
+    </div>
+
+
+
+</div>

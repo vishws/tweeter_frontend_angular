@@ -1,0 +1,26 @@
+<div>
+    <h2>My Posts</h2>
+    <ul>
+        <li *ngFor="let tweet of tweets">
+            <div class="tweet-card">
+                <div class="tweet-header">
+                    <img src="C:\Users\vishws\Downloads\tweeter.jpg" alt="User Profile Image" class="profile-image">
+                    <div class="user-info">
+                        <p><strong>{{ tweet.UserId }}</strong></p>
+                        <p>{{ tweet.createdAt | date: 'medium' }}</p>
+                    </div>
+                </div>
+                <div class="tweet-content">
+                    <p>{{ tweet.content }}</p>
+                </div>
+                <div class="tweet-actions">
+                    <button (click)="likeTweet(tweet.TweetID )">Like</button>
+                    <button (click)="addComment(tweet.TweetID, newComment)">Comment</button>
+                </div>
+                <div class="tweet-comments">
+                    <p *ngFor="let comment of tweet.comments">{{ comment }}</p>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

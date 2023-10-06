@@ -1,0 +1,112 @@
+/* Style for the container */
+
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the form headings */
+
+h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #1da1f2;
+  animation: swing 2s ease-in-out infinite;
+}
+
+@keyframes swing {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  20%,
+  60% {
+    transform: rotate(10deg);
+  }
+  40%,
+  80% {
+    transform: rotate(-10deg);
+  }
+}
+
+/* Style for form labels */
+
+label {
+  display: block;
+  font-weight: bold;
+  color: #1da1f2;
+  margin-bottom: 5px;
+}
+
+/* Style for form inputs and textareas */
+
+.form-control {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #1da1f2;
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus {
+  border-color: #1a237e;
+}
+
+/* Style for the Register button */
+
+.btn-info {
+  background-color: #1da1f2;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-info:hover {
+  background-color: #0f87c9;
+}
+
+/* Style for success and error messages */
+
+.alert {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.alert-success {
+  background-color: #e3f2fd;
+  border-color: #1da1f2;
+  color: #1da1f2;
+}
+
+.alert-danger {
+  background-color: #ffcdd2;
+  border-color: #e53935;
+  color: #e53935;
+}
+
+/* Style for "Go Back to Login" button */
+
+.btn-go-back {
+  background-color: #1da1f2;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 24px;
+  cursor: pointer;
+  margin-top: 35px;
+  transition: background-color 0.3s;
+}
+
+.btn-go-back:hover {
+  background-color: #0f87c9;
+}

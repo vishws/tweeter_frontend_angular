@@ -1,0 +1,36 @@
+<!-- <app-registration></app-registration> -->
+<div class="container">
+    <h2>Registration</h2>
+
+    <form (ngSubmit)="registerUser()" #registrationForm="ngForm">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" [(ngModel)]="userData.username" required class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" [(ngModel)]="userData.email" required class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" [(ngModel)]="userData.password" required class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="contactNo">Contact Number</label>
+            <input type="text" id="contactNo" name="contactNo" [(ngModel)]="userData.contactNo" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="address">Address</label>
+            <textarea id="address" name="address" [(ngModel)]="userData.address" class="form-control"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-info btn-go-back" style="margin-right: 20px;">Register</button>
+
+        <div *ngIf="responseMessage" class="alert alert-success">{{ responseMessage }}</div>
+
+        <!-- Display error message -->
+        <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+        <button type="button" class="btn btn-info btn-go-back" (click)="goBackToLogin()">Go Back to Login</button>
+    </form>
+</div>

@@ -1,0 +1,29 @@
+/* Style for the My Posts page */
+
+div {
+  text-align: center;
+  margin-top: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.tweet {
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.tweet p {
+  margin: 5px 0;
+}
+
+/* Add more styles as needed */

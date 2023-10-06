@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twitter Clone - Final</title>
+    <!-- Add your styles.css file -->
+    <link rel="stylesheet" href="dashboard.component.css" />
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+</head>
+
+<body>
+    <!-- sidebar starts -->
+    <div class="sidebar">
+        <i class="fab fa-twitter"></i>
+        <div class="sidebarOption active">
+            <span class="material-icons"> home </span>
+            <h2>Home</h2>
+        </div>
+
+        <div class="sidebarOption">
+            <span class="material-icons"> search </span>
+            <h2>Explore</h2>
+        </div>
+
+        <div class="sidebarOption">
+            <span class="material-icons"> notifications_none </span>
+            <h2>Notifications</h2>
+        </div>
+
+        <div class="sidebarOption">
+            <span class="material-icons"> mail_outline </span>
+            <h2>Messages</h2>
+        </div>
+
+        <div class="sidebarOption">
+            <span class="material-icons"> bookmark_border </span>
+            <h2>Bookmarks</h2>
+        </div>
+        <div class="sidebarOption">
+            <span class="material-icons"> list_alt </span>
+            <h2>Lists</h2>
+        </div>
+
+        <div class="sidebarOption">
+            <a routerLink="/user-profile" routerLinkActive="active" (click)="profile()" class="sidebarOption">
+                <span class="material-icons "> add_a_photo </span>
+                <h2 class="profile-link-text">Profile</h2>
+            </a>
+        </div>
+
+        <div class="sidebarOption">
+            <a routerLink="/logout" routerLinkActive="active" (click)="logout()" class="sidebarOption">
+                <span class="material-icons"> all_out </span>
+                <h2 class="profile-link-text">Logout</h2>
+            </a>
+        </div>
+
+
+    </div>
+    <!-- sidebar ends -->
+
+    <!-- feed starts -->
+    <div class="feed">
+
+
+        <!-- tweetbox starts -->
+        <div class="tweetBox">
+            <form>
+                <div class="tweetbox__input">
+                    <img [src]="profilePicture" alt="Profile Picture" class="profile-picture" width="50" height="50" />
+                    <input id="tweetContent" type="text" placeholder="What's happening?" />
+                </div>
+                <button type="button" class="tweetBox__tweetButton" (click)="tweet()">Tweet</button>
+            </form>
+            <!-- Dimmed overlay -->
+            <div *ngIf="loading" class="dim-overlay"></div>
+
+            <!-- Spinner -->
+            <div *ngIf="loading" class="spinner">
+                <!-- Add your spinner icon or loading animation here -->
+                Loading...
+            </div>
+        </div>
+
+        <!-- tweetbox ends -->
+
+        <!-- post starts -->
+        <!-- Assuming you have a div with a class like this -->
+
+
+        <div class="tweets-container">
+            <!-- Iterate over the sorted tweets array -->
+            <div *ngFor="let tweet of sortedTweets" class="post">
+                <div class="post__avatar">
+                    <img [src]="profilePicture" alt="Profile Picture" class="profile-picture" width="50" height="50" />
+                </div>
+
+                <div class="post__body">
+                    <div class="post__header">
+                        <div class="post__headerText">
+                            <h3>
+                                <strong></strong> {{ UserName }}
+                                <span class="post__headerSpecial">
+                                    <span class="material-icons post__badge"> verified </span>@{{ UserName }}
+                                </span>
+                            </h3>
+                        </div>
+
+                        <!-- Tweet content and creation date -->
+                        <div class="tweet">
+                            <p>{{ tweet.Content }}</p>
+                            <p class="tweet-created-at">{{ tweet.CreatedAt | date: 'medium' }}</p>
+                        </div>
+                    </div>
+                    <img [src]="randomImageUrl" alt="" />
+
+                    <!-- Display comment, favorite_border, and share icons in the same line -->
+                    <div class="post__footer">
+                        <!-- Display comment icon only once per tweet -->
+                        <span class="material-icons" (click)="toggleCommentBox(tweet)"> comment </span>
+
+                        <!-- Display comments -->
+                        <div *ngFor="let comment of tweet.Comments" class="post__footer">
+                            <!-- Display each comment -->
+                            <p>{{ comment.Content }}</p>
+                        </div>
+
+                        <!-- Display favorite_border and share icons -->
+                        <!-- Display favorite_border and share icons -->
+                        <!-- Display favorite_border and share icons -->
+
+                        <span class="material-icons" (click)="toggleLike(tweet)" [class.liked]="likedTweets.has(tweet.TweetID)">
+                            favorite_border
+                        </span>
+                        <span class="material-icons" (click)="retweet(tweet.tweetId); tweet.shared = !tweet.shared" [@shared]="tweet.shared ? 'shared' : 'unshared'">
+                            share
+                        </span>
+
+
+
+                    </div>
+
+                    <!-- Display comment textbox if the comment box is open -->
+                    <div *ngIf="tweet.showCommentBox" class="comment-box">
+                        <textarea [(ngModel)]="commentContent" name="commentContent" placeholder="Add a comment"></textarea>
+                        <button (click)="addComment(tweet)">Add Comment</button>
+
+                        <!-- Show the icon with green color if commentAdded is true -->
+                        <span class="material-icons" [style.color]="commentAdded ? 'green' : ''">comment</span>
+                    </div>
+
+
+
+                    <div *ngIf="tweet.Comments && tweet.Comments.length > 0">
+                        <h4>Comments:</h4>
+                        <ul>
+                            <li *ngFor="let comment of tweet.Comments">
+                                {{ comment.Content }}
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <!-- post ends -->
+
+
+        <!-- post ends -->
+    </div>
+    <!-- feed ends -->
+
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Follow Celebrities</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f0f0f0;
+                display: flex;
+                justify-content: space-between;
+            }
+            
+            header {
+                background-color: #00acee;
+                color: white;
+                text-align: center;
+                padding: 1em;
+                font-size: 1.5em;
+                width: 100%;
+            }
+            
+            main {
+                display: flex;
+                justify-content: space-between;
+                padding: 1em;
+                flex-grow: 1;
+            }
+            
+            .celebrities {
+                width: 70%;
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .right-panel {
+                width: 25%;
+                background-color: white;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+                padding: 1em;
+            }
+            
+            .celebrity {
+                display: flex;
+                align-items: center;
+                padding: 1em;
+                margin-bottom: 1em;
+                background-color: white;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            
+            .profile-picture {
+                border-radius: 50%;
+                margin-right: 1em;
+            }
+            
+            .user-details {
+                flex: 1;
+            }
+            
+            .follow-button {
+                background-color: #00acee;
+                color: white;
+                border: none;
+                padding: 0.5em 1em;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+    <body>
+
+
+        <main>
+            <div class="celebrities">
+                <div class="celebrity">
+                    <img src="https://placekitten.com/50/50" alt="Profile Picture" class="profile-picture">
+                    <div class="user-details">
+                        <h4>Shriram</h4>
+                        <p>@vishws</p>
+                    </div>
+                    <button class="follow-button" style="margin-right: auto;" [class.disabled]="isFollowing['Shriram']" [style.background-color]="isFollowing['Shriram'] ? 'grey' : ''" (click)="followClicked('Shriram')">
+                        Follow
+                    </button>
+                </div>
+
+                <div class="celebrity">
+                    <img src="https://placekitten.com/51/51" alt="Profile Picture" class="profile-picture">
+                    <div class="user-details">
+                        <h4>Ram</h4>
+                        <p>@vishws1</p>
+                    </div>
+                    <button class="follow-button" style="margin-right: auto;" [class.disabled]="isFollowing['Ram']" [style.background-color]="isFollowing['Ram'] ? 'grey' : ''" (click)="followClicked('Ram')">
+                        Follow
+                    </button>
+                </div>
+
+                <div class=" celebrity ">
+                    <img src="https://placekitten.com/52/52 " alt="Profile Picture " class="profile-picture ">
+                    <div class="user-details ">
+                        <h4>Jyothi</h4>
+                        <p>@jyoti</p>
+                    </div>
+                    <button class="follow-button" style="margin-right: auto;" [class.disabled]="isFollowing['Jyothi']" [style.background-color]="isFollowing['Jyothi'] ? 'grey' : ''" (click)="followClicked('Ram')">
+                        Follow
+                    </button>
+                </div>
+
+                <!-- Add more celebrities as needed -->
+
+            </div>
+
+
+        </main>
+
+    </body>
+
+    </html>
+
+
+</body>
+
+</html>
