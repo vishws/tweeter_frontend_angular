@@ -1,235 +1,238 @@
 /*Start Global Style*/
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 .main-heading {
-  text-align: center;
-  -webkit-text-fill-color: #1da1f2;
-  text-decoration-style: solid;
-  background: #eeebe9;
-  animation: moveInfinite 20s linear infinite;
-  /* Adjust the animation duration, timing function, and other properties as needed */
+    text-align: center;
+    -webkit-text-fill-color: #1df296;
+    text-decoration-style: solid;
+    background: #eeebe9;
+    animation: moveInfinite 20s linear infinite;
+    /* Adjust the animation duration, timing function, and other properties as needed */
 }
 
 @keyframes moveInfinite {
-  0% {
-    transform: translateX(-50px);
-    opacity: 0;
-  }
-  50% {
-    transform: translateX(50px);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(-50px);
-    opacity: 0;
-  }
+    0% {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    50% {
+        transform: translateX(50px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
 }
 
 body {
-  /* background: url("C:\Users\vishws\Downloads\tweeter.jpg") center center fixed; */
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  font-family: sans-serif;
+    /* background: url("C:\Users\vishws\Downloads\tweeter.jpg") center center fixed; */
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: sans-serif;
 }
 
 .container {
-  width: 80%;
-  margin: auto;
-  padding: 20px;
-  height: 100%;
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    height: 100%;
 }
 
 .login,
 .register {
-  width: 50%;
+    width: 50%;
 }
+
 
 /*Start Login Style*/
 
 .login {
-  float: left;
-  background-color: #fafafa;
-  height: 100%;
-  border-radius: 10px 0 0 10px;
-  text-align: center;
-  padding-top: 100px;
+    float: left;
+    background-color: #fafafa;
+    height: 100%;
+    border-radius: 10px 0 0 10px;
+    text-align: center;
+    padding-top: 100px;
 }
 
 .login h1 {
-  margin-bottom: 20px;
-  font-size: 2.5em;
+    margin-bottom: 20px;
+    font-size: 2.5em;
 }
 
 input[type="email"],
 input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 30px;
-  border: none;
-  background-color: #eeeeef;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 30px;
+    border: none;
+    background-color: #eeeeef;
 }
 
 input[type="checkbox"] {
-  float: left;
-  margin-right: 5px;
+    float: left;
+    margin-right: 5px;
 }
 
 .login span {
-  float: left;
+    float: left;
 }
 
 .login a {
-  float: right;
-  text-decoration: none;
-  color: #000;
-  transition: 0.3s all ease-in-out;
+    float: right;
+    text-decoration: none;
+    color: #000;
+    transition: 0.3s all ease-in-out;
 }
 
 .login a:hover {
-  color: #1da1f2;
-  font-weight: bold;
+    color: #1da1f2;
+    font-weight: bold;
 }
 
 .login button {
-  width: 100%;
-  margin: 30px 0;
-  padding: 10px;
-  border: none;
-  background-color: #1da1f2;
-  color: #fff;
-  font-size: 20px;
-  cursor: pointer;
-  transition: 0.3s all ease-in-out;
+    width: 100%;
+    margin: 30px 0;
+    padding: 10px;
+    border: none;
+    background-color: #1da1f2;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s all ease-in-out;
 }
 
 .login button:hover {
-  width: 97%;
-  font-size: 22px;
-  border-radius: 5px;
+    width: 97%;
+    font-size: 22px;
+    border-radius: 5px;
 }
 
 .login hr {
-  width: 30%;
-  display: inline-block;
+    width: 30%;
+    display: inline-block;
 }
 
 .login p {
-  display: inline-block;
-  margin: 0px 10px 30px;
+    display: inline-block;
+    margin: 0px 10px 30px;
 }
 
 .login ul {
-  list-style: none;
-  margin-bottom: 40px;
+    list-style: none;
+    margin-bottom: 40px;
 }
 
 .login ul li {
-  display: inline-block;
-  margin-right: 30px;
-  cursor: pointer;
+    display: inline-block;
+    margin-right: 30px;
+    cursor: pointer;
 }
 
 .login ul li:hover {
-  opacity: 0.6;
+    opacity: 0.6;
 }
 
 .login ul li:last-child {
-  margin-right: 0;
+    margin-right: 0;
 }
 
 .login .copyright {
-  display: inline-block;
-  float: none;
+    display: inline-block;
+    float: none;
 }
+
 
 /*Start Register Style*/
 
 .spin3D {
-  transform-style: preserve-3d;
-  animation: spin 10s linear infinite;
+    transform-style: preserve-3d;
+    animation: spin 10s linear infinite;
 }
 
 @keyframes spin {
-  0% {
-    transform: rotateY(0deg);
-  }
-  100% {
-    transform: rotateY(360deg);
-  }
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
 }
 
 .container {
-  opacity: 0;
-  animation: fadeIn 1s ease-in-out forwards;
-  animation-delay: 1s;
-  /* Delay the animation for 1 second */
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+    animation-delay: 1s;
+    /* Delay the animation for 1 second */
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px) translateZ(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) translateZ(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(20px) translateZ(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) translateZ(0);
+    }
 }
 
 .register {
-  float: right;
-  background-image: linear-gradient(135deg, #23212f 5%, #1da1f2 95%);
-  height: 100%;
-  color: #fff;
-  border-radius: 0 10px 10px 0;
-  text-align: center;
-  padding: 100px 0;
+    float: right;
+    background-image: linear-gradient(135deg, #23212f 5%, #1da1f2 95%);
+    height: 100%;
+    color: #fff;
+    border-radius: 0 10px 10px 0;
+    text-align: center;
+    padding: 100px 0;
 }
 
 .register h2 {
-  margin: 30px 0;
-  font-size: 50px;
-  letter-spacing: 3px;
+    margin: 30px 0;
+    font-size: 50px;
+    letter-spacing: 3px;
 }
 
 .register p {
-  font-size: 18px;
-  margin-bottom: 30px;
+    font-size: 18px;
+    margin-bottom: 30px;
 }
 
 .register button {
-  background-color: transparent;
-  border: 1px solid #fff;
-  border-radius: 20px;
-  padding: 10px 20px;
-  color: #fff;
-  font-size: 20px;
-  text-transform: uppercase;
-  transition: 0.2s all ease-in-out;
+    background-color: transparent;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 20px;
+    text-transform: uppercase;
+    transition: 0.2s all ease-in-out;
 }
 
 .register button:hover {
-  color: #1da1f2;
-  background-color: #fff;
-  cursor: pointer;
+    color: #1da1f2;
+    background-color: #fff;
+    cursor: pointer;
 }
+
 
 /* Add this to your existing CSS file or style block */
 
 .forgot-password-link {
-  color: #ff0000;
-  /* Set your desired color, you can use color names or hex values */
-  text-decoration: none;
-  /* Remove underline */
-  font-weight: bold;
-  /* Make the text bold if desired */
-  /* Add other styles as needed */
+    color: #ff0000;
+    /* Set your desired color, you can use color names or hex values */
+    text-decoration: none;
+    /* Remove underline */
+    font-weight: bold;
+    /* Make the text bold if desired */
+    /* Add other styles as needed */
 }
