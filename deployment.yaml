@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jovial_wilson
+  name: jovial-wilson
 spec:
   replicas: 3 # Adjust the number of replicas as needed
   selector:
     matchLabels:
-      app: jovial_wilson
+      app: jovial-wilson
   template:
     metadata:
       labels:
-        app: jovial_wilson
+        app: jovial-wilson
     spec:
       containers:
-        - name: jovial_wilson
+        - name: jovial-wilson
           image: vishws/tweeter_angular_frontend_app:angular
           ports:
             - containerPort: 9010
